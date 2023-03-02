@@ -9,3 +9,6 @@
 # folders
 data/
 .vscode/
+
+# files
+pbcs_angle_scan.jl
