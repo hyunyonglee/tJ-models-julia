@@ -1,4 +1,5 @@
 using ITensors
+using MKL
 
 # Defining PBCS Hamiltonian
 function PBCS_H(Nx, Ny, t, Dx, Dy, mu)
