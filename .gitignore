@@ -1,0 +1,11 @@
+# Jupyter Notebook
+*.ipynb
+
+# Miscellaneous
+*.txt
+*.h5
+*.log
+
+# folders
+data/
+.vscode/
