@@ -7,6 +7,7 @@
 *.log
 .DS_Store
 
+
 # folders
 data/
 .vscode/
@@ -15,3 +16,4 @@ data/
 pbcs_angle_scan.jl
 tJ_J_scan.jl
 overlap_calc.jl
+nohup.out
