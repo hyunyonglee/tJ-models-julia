@@ -66,7 +66,7 @@ end
 # Writing mps
 function writing_mps(psi, mps_file_name)
     f = h5open(mps_file_name, "w")
-    write(f, mps_file_name, psi)
+    write(f, "psi", psi)
     close(f)
 end
 
