@@ -4,7 +4,7 @@ using Printf
 using HDF5
 using DelimitedFiles
 
-# Running DMRG function
+# Running DMRG function with random initial state
 function run_dmrg(H, dmrg_params, sites)
 
     # Reading dmrg params
@@ -16,6 +16,27 @@ function run_dmrg(H, dmrg_params, sites)
     # Run DMRG
     dmrg_observer = DMRGObserver(; energy_tol=1E-8)
     psi0 = randomMPS(sites, linkdims=20)
+    e, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise, observer=dmrg_observer, outputlevel=1)
+
+    # Energy variance for sanity check
+    e_var = inner(H, psi, H, psi) - e^2
+
+    return psi, e, e_var, dmrg_observer
+
+end
+
+
+# Running DMRG function
+function run_dmrg(H, dmrg_params, psi0)
+
+    # Reading dmrg params
+    nsweeps = dmrg_params["nsweeps"]
+    maxdim = dmrg_params["maxdim"]
+    noise = dmrg_params["noise"]
+    cutoff = dmrg_params["cutoff"]
+
+    # Run DMRG
+    dmrg_observer = DMRGObserver(; energy_tol=1E-8)
     e, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise, observer=dmrg_observer, outputlevel=1)
 
     # Energy variance for sanity check

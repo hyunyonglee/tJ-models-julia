@@ -5,7 +5,8 @@ using MKL
 function PBCS_H(Nx, Ny, t, Dx, Dy, mu)
 
     # Define sites
-    sites = siteinds("tJ", Nx * Ny)
+    sites = siteinds("tJ", Nx * Ny; conserve_sz=true )
+    # sites = siteinds("tJ", Nx * Ny)
 
     # Defining MPO
     os = OpSum()
@@ -57,7 +58,8 @@ function PBCS_H(Nx, Ny, t, Dx, Dy, mu)
         end
     end
 
-    return MPO(os, sites), sites
+    return MPO(os, sites; splitblocks=true), sites
+    # return MPO(os, sites), sites
 end
 
 
