@@ -5,7 +5,7 @@ using MKL
 function PBCS_H(Nx, Ny, t, Dx, Dy, mu)
 
     # Define sites
-    sites = siteinds("tJ", Nx * Ny; conserve_sz=true )
+    sites = siteinds("tJ", Nx * Ny; conserve_sz=true, conserve_nfparity=true )
     # sites = siteinds("tJ", Nx * Ny)
 
     # Defining MPO
