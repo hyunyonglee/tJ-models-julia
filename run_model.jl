@@ -40,9 +40,10 @@ function run_dmrg(H, dmrg_params, psi0)
     e, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise, observer=dmrg_observer, outputlevel=1)
 
     # Energy variance for sanity check
-    e_var = inner(H, psi, H, psi) - e^2
+    # e_var = inner(H, psi, H, psi) - e^2
 
-    return psi, e, e_var, dmrg_observer
+    # return psi, e, e_var, dmrg_observer
+    return psi, e, dmrg_observer
 
 end
 
