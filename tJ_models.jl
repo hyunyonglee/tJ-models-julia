@@ -5,7 +5,7 @@ using MKL
 function PBCS_H(Nx, Ny, t, Dx, Dy, mu)
 
     # Define sites
-    sites = siteinds("tJ", Nx * Ny; conserve_sz=true, conserve_nfparity=true )
+    sites = siteinds("tJ", Nx * Ny; conserve_sz=true, conserve_nfparity=true)
     # sites = siteinds("tJ", Nx * Ny)
 
     # Defining MPO
@@ -64,10 +64,10 @@ end
 
 
 # Defining t-J Hamiltonian
-function tJ_H(Nx, Ny, t, J, mu)
+function tJ_H(Nx, Ny, t, J)
 
     # Define sites
-    sites = siteinds("tJ", Nx * Ny)
+    sites = siteinds("tJ", Nx * Ny; conserve_nf=true; conserve_sz=true, conserve_nfparity=true)
     
     # Defining MPO
     os = OpSum()
@@ -84,7 +84,7 @@ function tJ_H(Nx, Ny, t, J, mu)
             end
 
             # On-site terms
-            os .+= -mu, "Ntot", s
+            # os .+= -mu, "Ntot", s
 
             # Hopping: y-direction
             os .+= -t, "Cdagup", s, "Cup", su
@@ -114,5 +114,5 @@ function tJ_H(Nx, Ny, t, J, mu)
         end
     end
 
-    return MPO(os, sites), sites
+    return MPO(os, sites; splitblocks=true), sites
 end
