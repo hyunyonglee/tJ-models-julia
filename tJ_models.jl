@@ -67,7 +67,7 @@ end
 function tJ_H(Nx, Ny, t, J)
 
     # Define sites
-    sites = siteinds("tJ", Nx * Ny; conserve_nf=true; conserve_sz=true, conserve_nfparity=true)
+    sites = siteinds("tJ", Nx * Ny; conserve_nf=true, conserve_sz=true, conserve_nfparity=true)
     
     # Defining MPO
     os = OpSum()
