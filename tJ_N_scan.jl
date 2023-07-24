@@ -31,8 +31,7 @@ let
     dir_path = pwd() * "/data/tJ_$(Nx)x$(Ny)_J_$(J)_chi_$(chi)"
     create_directory(dir_path * "/mps")
     create_directory(dir_path * "/logs")
-    create_directory(dir_path * "/observables")
-
+    
     # Defining N scan params
     Nf_min = 6
     Nf_max = 10
@@ -84,7 +83,7 @@ let
         @show( sum( expect(psi, "Ntot") ) )
 
         # Write mps
-        writing_mps(psi, dir_path * "/mps/psi_t_$(t)_Nf_$(Nf).h5")
+        writing_mps(psi, dir_path * "/mps/psi_J_$(J)_Nf_$(Nf).h5")
 
         # Write logs
         model_params["Nf"] = Nf
@@ -92,7 +91,7 @@ let
 
         # Write observables to the file
         f = open(dir_path * "/observables.txt", "a+")
-        @printf(f, "%.3f %.3f\n", J, e)
+        @printf(f, "%.3f %d %.3f\n", J, Nf, e)
         close(f)
 
     end
