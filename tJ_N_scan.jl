@@ -65,10 +65,15 @@ let
         H, sites = tJ_H(Nx, Ny, t, J)
 
         # Define initial state
-        state = [isodd(n) ? "Up" : "Dn" for n=1:Nf]
-        for n = (Nf+1):N
-            state[n] = "0"
+        state = ["0" for n=1:Nf]
+        for n = 1:Nf
+            if n % 2 == 0
+                state[n] = "Dn"
+            else
+                state[n] = "Up"
+            end
         end
+       
         @show(state)
         psi0 = randomMPS(sites, state, 100)
         # psi0 = productMPS(sites,state)
