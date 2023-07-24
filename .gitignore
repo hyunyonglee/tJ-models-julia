@@ -15,5 +15,6 @@ data/
 # files
 pbcs_angle_scan.jl
 tJ_J_scan.jl
+tJ_N_scan.jl
 overlap_calc.jl
 nohup.out
