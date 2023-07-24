@@ -65,7 +65,7 @@ let
         H, sites = tJ_H(Nx, Ny, t, J)
 
         # Define initial state
-        state = ["0" for n=1:Nf]
+        state = ["0" for n=1:N]
         for n = 1:Nf
             if n % 2 == 0
                 state[n] = "Dn"
