@@ -81,7 +81,7 @@ let
         # Run DMRG
         # psi, e, e_var, dmrg_observer = run_dmrg(H, dmrg_params, psi0)
         psi, e, dmrg_observer = run_dmrg(H, dmrg_params, psi0)
-        @show( expect(psi, "N") )
+        @show( expect(psi, "Ntot") )
 
         # Write mps
         writing_mps(psi, dir_path * "/mps/psi_t_$(t)_Nf_$(Nf).h5")
