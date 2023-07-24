@@ -81,7 +81,7 @@ let
         # Run DMRG
         # psi, e, e_var, dmrg_observer = run_dmrg(H, dmrg_params, psi0)
         psi, e, dmrg_observer = run_dmrg(H, dmrg_params, psi0)
-        @show( expect(psi, "Ntot") )
+        @show( sum( expect(psi, "Ntot") ) )
 
         # Write mps
         writing_mps(psi, dir_path * "/mps/psi_t_$(t)_Nf_$(Nf).h5")
@@ -92,7 +92,7 @@ let
 
         # Write observables to the file
         f = open(dir_path * "/observables.txt", "a+")
-        @printf(f, "%.3f %.3f %.8f\n", J, e)
+        @printf(f, "%.3f %.3f\n", J, e)
         close(f)
 
     end
